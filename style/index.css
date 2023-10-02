@@ -1,1 +1,201 @@
-/*# sourceMappingURL=index.css.map */
+*,
+*::after,
+*::before {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+@font-face {
+  font-family: fontHalloween;
+  src: url(../font/Creepster-Regular.ttf) format("truetype");
+}
+/*HEADER*/
+.header {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  width: 100%;
+  font-size: 1rem;
+  color: white;
+  position: fixed;
+  top: 20px;
+  margin: 0 auto;
+  text-align: center;
+  color: rgb(218, 28, 28);
+}
+
+.wrap__icon {
+  padding-top: 5px;
+  transition: 0.3s;
+  margin-right: 50px;
+}
+
+.wrap__icon-music {
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.icon-music {
+  color: rgb(255, 255, 255);
+}
+
+.wrap__icon-mute-music {
+  font-size: 3rem;
+  cursor: pointer;
+  display: none;
+}
+
+.active-mute-music {
+  display: block;
+}
+
+.icon-mute-music {
+  position: relative;
+  left: 0;
+  top: -40px;
+  color: rgb(218, 28, 28);
+}
+
+.header-title {
+  font-family: fontHalloween;
+  letter-spacing: 5px;
+}
+
+/*MAIN*/
+.home {
+  background-color: #fbc24a;
+  height: 100vh;
+  width: 100vw;
+}
+.home__title {
+  text-align: center;
+  color: white;
+  padding-top: 100px;
+  font-size: 4rem;
+  text-transform: uppercase;
+  font-family: fontHalloween;
+  margin: 0 10px;
+}
+@media (min-width: 640px) {
+  .home__title {
+    font-size: 5rem;
+  }
+}
+@media (min-width: 766px) {
+  .home__title {
+    font-size: 5rem;
+  }
+}
+.home__link {
+  display: inline-block;
+  width: 100%;
+  text-decoration: none;
+  text-align: center;
+  margin: 20px auto;
+  z-index: 999;
+}
+@media (min-width: 766px) {
+  .home__link {
+    margin-top: 50px;
+  }
+}
+.home__button {
+  width: 80%;
+  background-color: red;
+  color: white;
+  border: none;
+  outline: none;
+  padding: 15px;
+  border-radius: 25px;
+  font-size: 1.5rem;
+  font-family: fontHalloween;
+}
+@media (min-width: 640px) {
+  .home__button {
+    font-size: 2rem;
+  }
+}
+@media (min-width: 766px) {
+  .home__button {
+    font-size: 2rem;
+  }
+}
+@media (min-width: 1024px) {
+  .home__button {
+    width: 50vh;
+  }
+}
+@media (min-width: 1280px) {
+  .home__button {
+    width: 60vh;
+  }
+}
+.home__link:hover .home__button {
+  border: none;
+  transform: scale(1.1);
+  cursor: pointer;
+}
+.home__background-banner {
+  width: 80%;
+  position: absolute;
+  bottom: 10px;
+  right: 50px;
+}
+@media (min-width: 640px) {
+  .home__background-banner {
+    width: 70%;
+    right: 20%;
+  }
+}
+@media (min-width: 766px) {
+  .home__background-banner {
+    width: 60%;
+    right: 20%;
+  }
+}
+@media (min-width: 1024px) {
+  .home__background-banner {
+    width: 50%;
+    right: 30vw;
+  }
+}
+@media (min-width: 1280px) {
+  .home__background-banner {
+    width: 60vh;
+    right: 35vw;
+  }
+}
+
+.choose-card {
+  height: 100vh;
+  background-color: #966b50;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 350px);
+  row-gap: 50px;
+  -moz-column-gap: 50px;
+       column-gap: 50px;
+  overflow: auto;
+  cursor: grab;
+}
+
+.grabbing {
+  cursor: grabbing;
+}
+
+.image-card {
+  width: 350px;
+  height: 450px;
+}
+
+img:nth-child(2n+1) {
+  margin-top: 50px;
+}
+
+img:nth-child(3n+4) {
+  margin-top: 30px;
+}/*# sourceMappingURL=index.css.map */

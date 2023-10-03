@@ -260,3 +260,7 @@ function handleOnInputMessage(event) {
   const maxLength = event.target.getAttribute("maxlength");
   spanLimitedText.innerText = `${currentLengthText} / ${maxLength}`;
 }
+
+//Query URL
+const params = new URLSearchParams();
+

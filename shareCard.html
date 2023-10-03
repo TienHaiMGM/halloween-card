@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Tien Hai" />
+    <meta
+      name="description"
+      content="Let's create a custom Halloween card for you at here." />
+    <title>Halloween Card</title>
+    <link rel="stylesheet" href="style/index.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+  </head>
+  <body>
+    <div class="loading">
+      <div class="spinner">
+        <p class="spinner-text">Loading</p>
+        <div class="spinner-sector spinner-sector--red"></div>
+        <div class="spinner-sector spinner-sector--blue"></div>
+        <div class="spinner-sector spinner-sector--green"></div>
+      </div>
+    </div>
+    <header class="header">
+      <span class="wrap__icon">
+        <span class="wrap__icon-music"
+          ><i class="fa fa-music icon-music"></i>
+        </span>
+        <span class="wrap__icon-mute-music">
+          <i class="fa fa-ban icon-mute-music"></i>
+        </span>
+      </span>
+      <a class="header__link-title" href="#"
+        ><h1 class="header__title">Halloween Card</h1></a
+      >
+    </header>
+    <main class="main">
+        <aside class="audio">
+          <audio
+            class="audio-control"
+            src="./audio/audio-sound-effect.mp3"></audio>
+            <audio
+            class="music-control"
+            src="./audio/music-halloween.mp3">
+        </aside>
+        <section class="halloween-card">
+            <div class="halloween-card__items itemGoUp">
+                <img
+                  class="halloween-card__image"
+                  src="./image/halloween-card-1.png"
+                  alt="halloween-card" />
+              </div>
+            <div class="halloween-card__button buttonFadeUp">
+                <a href="#" class="halloween-card__title-button"
+                  >Open your halloween card</a
+                >
+              </div>
+              <div class="halloween-card__message">
+                <div class="halloween-card__message-wrap">
+                    <h1 class="halloween-card__message-intro">Have a weird Halloween</h1>
+                    <p class="halloween-card__message-title">Happy Halloween </p>
+                    <p class="halloween-card__message-content">I miss you so much</p>
+                    <p class="halloween-card__message-from">From: Tien Hai</p>
+                </div>
+                <div class="share-card">
+                    <p class="share-card__title">Share your Halloween Card</p>
+                    <div class="share-card__wrap-icon">
+                      <a class="share-card__icon" href=""
+                        ><i class="fa-brands fa-facebook"></i
+                      ></a>
+                      <a class="share-card__icon" href=""
+                        ><i class="fa-brands fa-twitter"></i
+                      ></a>
+                      <a class="share-card__icon" href=""
+                        ><i class="fa-brands fa-instagram"></i
+                      ></a>
+                    </div>
+                  </div>
+                <a class="halloween-card__message-link" href=""><button class="halloween-card__message-button ">Create Halloween Card</button></a>
+              </div>
+        </section>
+    </main>
+    <script src="shareCard.js"></script>
+  </body>
+</html>

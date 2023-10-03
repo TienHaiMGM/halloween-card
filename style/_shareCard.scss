@@ -1,0 +1,231 @@
+@use "breakpoints";
+$color-background: #fbc24a;
+$color-red: rgb(218, 28, 28);
+
+@font-face {
+  font-family: fontHalloween;
+  src: url(../font/Creepster-Regular.ttf) format("truetype");
+}
+
+// @mixin transformFlyCard($scale, $translateX, $translateY, $rotate) {
+//   transform: scale($scale) translate($translateX, $translateY) rotate($rotate);
+// }
+
+@keyframes flyCard {
+  0% {
+    transform: none;
+  }
+  100% {
+    transform: scale(0.6) translate(-50%, -30%) rotate(-10deg);
+  }
+}
+.flyCard {
+  transition: 0.3s;
+}
+@keyframes buttonFadeUp {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.buttonFadeUp {
+  animation: buttonFadeUp 2s ease-in-out 1s;
+}
+@keyframes itemGoUp {
+  0% {
+    transform: translate(0, -10%);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+.itemGoUp {
+  animation: itemGoUp 1s linear 1s;
+}
+
+.hidden {
+  transition: 0.3;
+  visibility: hidden;
+}
+
+.halloween-card {
+  & {
+    background-color: $color-background;
+    width: 100vw;
+    height: 100vh;
+  }
+  &__items {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20vh;
+    position: relative;
+    z-index: 2;
+    @include breakpoints.lg {
+      padding-top: 10vh;
+    }
+  }
+
+  &__image {
+    width: 300px;
+    height: 450px;
+    z-index: 2;
+    @include breakpoints.md {
+      width: 400px;
+      height: 600px;
+      visibility: visible;
+    }
+    @include breakpoints.lg {
+      width: 500px;
+      height: 700px;
+      visibility: visible;
+    }
+  }
+  &__button {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    border: 2px solid white;
+    background-color: orangered;
+    transition: 0.3s;
+    position: relative;
+    bottom: 5%;
+    left: calc(50% - 65px);
+    padding: 10px;
+    z-index: 3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @include breakpoints.md {
+      width: 160px;
+      height: 160px;
+      left: calc(50% - 80px);
+    }
+    @include breakpoints.lg {
+      width: 180px;
+      height: 180px;
+      left: calc(50% - 90px);
+    }
+  }
+  &__button:hover {
+    transform: scale(1.1);
+  }
+  &__title-button {
+    display: block;
+    text-decoration: none;
+    color: white;
+    font-size: 1rem;
+    text-transform: uppercase;
+    font-weight: 500;
+    text-align: center;
+    word-wrap: break-word;
+    @include breakpoints.md {
+      font-size: 1.3rem;
+    }
+    @include breakpoints.lg {
+      font-size: 1.5rem;
+    }
+  }
+}
+
+//Message{
+.halloween-card__message {
+  & {
+    width: 80%;
+    height: 60%;
+    background-color: white;
+    position: absolute;
+    top: 20vh;
+    left: 10%;
+    outline: 15px solid rgb(255, 255, 255);
+    border: 2px solid gray;
+    text-align: center;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    visibility: hidden;
+    @include breakpoints.md {
+      padding-left: 20vw;
+    }
+    @include breakpoints.lg {
+      padding-left: 15vw;
+      width: 60%;
+      left: 15%;
+    }
+  }
+  &-wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5vw;
+    padding-bottom: 20px;
+    border-bottom: 2px solid gray;
+    @include breakpoints.lg {
+      gap: 3vw;
+    }
+  }
+  &-intro {
+    color: $color-red;
+    font-size: 1.5rem;
+    font-family: fontHalloween;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  &-title {
+    color: #223328;
+    font-size: 2.5rem;
+  }
+  &-content {
+    color: #223328;
+    font-size: 1.5rem;
+  }
+  &-from {
+    color: #223328;
+    font-size: 1.7rem;
+    color: #be1725;
+  }
+  &-link {
+    display: block;
+  }
+  &-button {
+    background-color: $color-red;
+    width: 100%;
+    padding: 20px;
+    border: none;
+    outline: none;
+    font-weight: 600;
+    font-size: 1rem;
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+
+    cursor: pointer;
+    @include breakpoints.xm {
+      width: 80%;
+    }
+    @include breakpoints.md {
+      width: 60%;
+    }
+    @include breakpoints.lg {
+      width: 40%;
+    }
+    @include breakpoints.xl {
+      width: 30%;
+    }
+  }
+  &-button:hover {
+    border: none;
+    transform: scale(1.1);
+  }
+}
+.show-message {
+  visibility: visible;
+}

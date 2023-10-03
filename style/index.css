@@ -1,3 +1,250 @@
+@font-face {
+  font-family: fontHalloween;
+  src: url(../font/Creepster-Regular.ttf) format("truetype");
+}
+@keyframes flyCard {
+  0% {
+    transform: none;
+  }
+  100% {
+    transform: scale(0.6) translate(-50%, -30%) rotate(-10deg);
+  }
+}
+.flyCard {
+  transition: 0.3s;
+}
+
+@keyframes buttonFadeUp {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.buttonFadeUp {
+  animation: buttonFadeUp 2s ease-in-out 1s;
+}
+
+@keyframes itemGoUp {
+  0% {
+    transform: translate(0, -10%);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+.itemGoUp {
+  animation: itemGoUp 1s linear 1s;
+}
+
+.hidden {
+  transition: 0.3;
+  visibility: hidden;
+}
+
+.halloween-card {
+  background-color: #fbc24a;
+  width: 100vw;
+  height: 100vh;
+}
+.halloween-card__items {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 20vh;
+  position: relative;
+  z-index: 2;
+}
+@media (min-width: 1024px) {
+  .halloween-card__items {
+    padding-top: 10vh;
+  }
+}
+.halloween-card__image {
+  width: 300px;
+  height: 450px;
+  z-index: 2;
+}
+@media (min-width: 766px) {
+  .halloween-card__image {
+    width: 400px;
+    height: 600px;
+    visibility: visible;
+  }
+}
+@media (min-width: 1024px) {
+  .halloween-card__image {
+    width: 500px;
+    height: 700px;
+    visibility: visible;
+  }
+}
+.halloween-card__button {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  border: 2px solid white;
+  background-color: orangered;
+  transition: 0.3s;
+  position: relative;
+  bottom: 5%;
+  left: calc(50% - 65px);
+  padding: 10px;
+  z-index: 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@media (min-width: 766px) {
+  .halloween-card__button {
+    width: 160px;
+    height: 160px;
+    left: calc(50% - 80px);
+  }
+}
+@media (min-width: 1024px) {
+  .halloween-card__button {
+    width: 180px;
+    height: 180px;
+    left: calc(50% - 90px);
+  }
+}
+.halloween-card__button:hover {
+  transform: scale(1.1);
+}
+.halloween-card__title-button {
+  display: block;
+  text-decoration: none;
+  color: white;
+  font-size: 1rem;
+  text-transform: uppercase;
+  font-weight: 500;
+  text-align: center;
+  word-wrap: break-word;
+}
+@media (min-width: 766px) {
+  .halloween-card__title-button {
+    font-size: 1.3rem;
+  }
+}
+@media (min-width: 1024px) {
+  .halloween-card__title-button {
+    font-size: 1.5rem;
+  }
+}
+
+.halloween-card__message {
+  width: 80%;
+  height: 60%;
+  background-color: white;
+  position: absolute;
+  top: 20vh;
+  left: 10%;
+  outline: 15px solid rgb(255, 255, 255);
+  border: 2px solid gray;
+  text-align: center;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  visibility: hidden;
+}
+@media (min-width: 766px) {
+  .halloween-card__message {
+    padding-left: 20vw;
+  }
+}
+@media (min-width: 1024px) {
+  .halloween-card__message {
+    padding-left: 15vw;
+    width: 60%;
+    left: 15%;
+  }
+}
+.halloween-card__message-wrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5vw;
+  padding-bottom: 20px;
+  border-bottom: 2px solid gray;
+}
+@media (min-width: 1024px) {
+  .halloween-card__message-wrap {
+    gap: 3vw;
+  }
+}
+.halloween-card__message-intro {
+  color: rgb(218, 28, 28);
+  font-size: 1.5rem;
+  font-family: fontHalloween;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+.halloween-card__message-title {
+  color: #223328;
+  font-size: 2.5rem;
+}
+.halloween-card__message-content {
+  color: #223328;
+  font-size: 1.5rem;
+}
+.halloween-card__message-from {
+  color: #223328;
+  font-size: 1.7rem;
+  color: #be1725;
+}
+.halloween-card__message-link {
+  display: block;
+}
+.halloween-card__message-button {
+  background-color: rgb(218, 28, 28);
+  width: 100%;
+  padding: 20px;
+  border: none;
+  outline: none;
+  font-weight: 600;
+  font-size: 1rem;
+  color: white;
+  text-decoration: none;
+  border-radius: 25px;
+  cursor: pointer;
+}
+@media (min-width: 640px) {
+  .halloween-card__message-button {
+    width: 80%;
+  }
+}
+@media (min-width: 766px) {
+  .halloween-card__message-button {
+    width: 60%;
+  }
+}
+@media (min-width: 1024px) {
+  .halloween-card__message-button {
+    width: 40%;
+  }
+}
+@media (min-width: 1280px) {
+  .halloween-card__message-button {
+    width: 30%;
+  }
+}
+.halloween-card__message-button:hover {
+  border: none;
+  transform: scale(1.1);
+}
+
+.show-message {
+  visibility: visible;
+}
+
 *,
 *::after,
 *::before {
@@ -8,7 +255,6 @@
 body {
   margin: 0;
   padding: 0;
-  overflow: hidden;
   scroll-behavior: smooth;
 }
 
@@ -246,20 +492,20 @@ a:focus {
   }
 }
 
-a:nth-child(2n+1) {
+.item-card:nth-child(2n+1) {
   margin-top: 20px;
 }
 @media (min-width: 1280px) {
-  a:nth-child(2n+1) {
+  .item-card:nth-child(2n+1) {
     margin-top: 50px;
   }
 }
 
-a:nth-child(3n+4) {
+.item-card:nth-child(3n+4) {
   margin-top: 20px;
 }
 @media (min-width: 1280px) {
-  a:nth-child(3n+4) {
+  .item-card:nth-child(3n+4) {
     margin-top: 50px;
   }
 }
@@ -511,30 +757,38 @@ a:nth-child(3n+4) {
   background-color: rgb(218, 28, 28);
   margin-left: 50px;
 }
+.message-card__label--last {
+  margin-bottom: 100px;
+}
+@media (min-width: 766px) {
+  .message-card__label--last {
+    margin-bottom: 50px;
+  }
+}
+@media (min-width: 1024px) {
+  .message-card__label--last {
+    margin-bottom: 25px;
+  }
+}
 
+.share-card {
+  padding: 0;
+}
 .share-card__title {
   color: #223328;
   font-size: 1.3rem;
   font-weight: 600;
   text-align: center;
-  margin-top: 100px;
-}
-@media (min-width: 766px) {
-  .share-card__title {
-    margin-top: 50px;
-  }
-}
-@media (min-width: 1024px) {
-  .share-card__title {
-    margin-top: 10px;
-  }
+  margin-bottom: 20px;
 }
 .share-card__wrap-icon {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  gap: 20px;
+  -moz-column-gap: 20px;
+       column-gap: 20px;
+  height: 100%;
 }
 .share-card__icon {
   align-self: baseline;

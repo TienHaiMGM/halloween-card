@@ -1,6 +1,7 @@
 @use "breakpoints";
 //Variables
 $color-background: #fbc24a;
+$color-red: rgb(218, 28, 28);
 *,
 *::after,
 *::before {
@@ -10,18 +11,24 @@ $color-background: #fbc24a;
 body {
   margin: 0;
   padding: 0;
-  //   overflow: scroll;
+  overflow: hidden;
+  scroll-behavior: smooth;
 }
 
 @font-face {
   font-family: fontHalloween;
   src: url(../font/Creepster-Regular.ttf) format("truetype");
 }
+a:focus {
+  border: none;
+  outline: none;
+  background-color: none;
+}
 /*HEADER*/
 .header {
   display: flex;
   justify-content: center;
-  gap: 50px;
+  gap: 20px;
   width: 100%;
   font-size: 1rem;
   color: white;
@@ -29,12 +36,13 @@ body {
   top: 20px;
   margin: 0 auto;
   text-align: center;
-  color: rgb(218, 28, 28);
 }
 .wrap__icon {
   padding-top: 5px;
   transition: 0.3s;
   margin-right: 50px;
+  position: absolute;
+  left: 20px;
 }
 .wrap__icon-music {
   font-size: 1.5rem;
@@ -52,16 +60,23 @@ body {
   display: block;
 }
 .icon-mute-music {
-  position: relative;
-  left: 0;
-  top: -40px;
-  color: rgb(218, 28, 28);
+  position: absolute;
+  left: -10px;
+  top: -6px;
+  color: $color-red;
 }
-.header-title {
+.header__title {
   font-family: fontHalloween;
   letter-spacing: 5px;
 }
-
+.header__link-title {
+  text-decoration: none;
+  color: $color-red;
+}
+.audio {
+  display: none;
+  visibility: hidden;
+}
 /*MAIN*/
 //HOME
 .home {
@@ -98,7 +113,7 @@ body {
   }
   &__button {
     width: 80%;
-    background-color: red;
+    background-color: $color-red;
     color: white;
     border: none;
     outline: none;
@@ -150,26 +165,393 @@ body {
 
 //CHOSE CARD
 .choose-card {
+  width: 100vw;
   height: 100vh;
-  background-color: #966b50;
+  padding: 20px;
+  background-color: $color-background;
   display: grid;
-  grid-template-columns: repeat(auto-fill, 350px);
+  grid-template-rows: repeat(5, 200px);
+  grid-template-columns: repeat(auto-fill, 150px);
+  grid-auto-flow: column;
   row-gap: 50px;
   column-gap: 50px;
-  overflow: auto;
+  overflow: hidden;
   cursor: grab;
+  transition: 0.3s;
+  @include breakpoints.md {
+    grid-template-rows: repeat(5, 300px);
+    grid-template-columns: repeat(auto-fill, 225px);
+    row-gap: 100px;
+    column-gap: 100px;
+  }
+  @include breakpoints.xl {
+    grid-template-rows: repeat(5, 450px);
+    grid-template-columns: repeat(auto-fill, 350px);
+    row-gap: 100px;
+    column-gap: 100px;
+  }
 }
 .grabbing {
   cursor: grabbing;
 }
 .image-card {
-  width: 350px;
-  height: 450px;
+  width: 150px;
+  height: 200px;
+  @include breakpoints.md {
+    width: 225px;
+    height: 300px;
+  }
+
+  @include breakpoints.xl {
+    width: 350px;
+    height: 450px;
+  }
 }
-img:nth-child(2n + 1) {
-  margin-top: 50px;
+a:nth-child(2n + 1) {
+  margin-top: 20px;
+  @include breakpoints.xl {
+    margin-top: 50px;
+  }
 }
 
-img:nth-child(3n + 4) {
-  margin-top: 30px;
+a:nth-child(3n + 4) {
+  margin-top: 20px;
+  @include breakpoints.xl {
+    margin-top: 50px;
+  }
+}
+
+//Card Selected
+.card-selected {
+  & {
+    width: 100vw;
+    height: 100vh;
+    background-color: $color-background;
+  }
+  &__items {
+    position: relative;
+  }
+  &__image {
+    width: 250px;
+    height: 400px;
+    position: relative;
+    z-index: 2;
+    @include breakpoints.md {
+      width: 450px;
+      height: 650px;
+    }
+    @include breakpoints.lg {
+      width: 500px;
+      height: 700px;
+    }
+  }
+}
+.next-back {
+  & {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    padding: 0 20px;
+    position: relative;
+    top: 20%;
+    @include breakpoints.xm {
+      padding: 0 30px;
+    }
+    @include breakpoints.lg {
+      top: 15%;
+      padding: 0 50px;
+    }
+  }
+  &__button {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 1.6rem;
+    @include breakpoints.md {
+      font-size: 2rem;
+    }
+    @include breakpoints.lg {
+      font-size: 2.5rem;
+    }
+  }
+}
+.wrap__next-button {
+  cursor: pointer;
+}
+.wrap__back-button {
+  cursor: pointer;
+}
+.next-back::after {
+  content: "";
+  background-color: white;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: 50.5%;
+  outline: 1px solid rgba(235, 235, 235, 0.5);
+}
+.number-card {
+  & {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    font-size: 2rem;
+    @include breakpoints.md {
+      font-size: 2.5rem;
+    }
+    @include breakpoints.lg {
+      font-size: 3rem;
+    }
+  }
+  &__first {
+    border-bottom: 3px solid white;
+  }
+  &__second {
+  }
+}
+
+.exit-to-back {
+  position: relative;
+}
+.wrap__exit-button {
+  font-size: 2rem;
+  color: white;
+  z-index: 999;
+  position: fixed;
+  top: 0px;
+  right: 20px;
+}
+
+.message-button {
+  & {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 2px solid white;
+    background-color: orangered;
+    position: relative;
+    top: 10%;
+    left: 40%;
+    z-index: 2;
+    cursor: pointer;
+    transition: 0.3s;
+    @include breakpoints.md {
+      width: 180px;
+      height: 180px;
+      top: -15%;
+      left: 65%;
+    }
+    @include breakpoints.lg {
+      width: 200px;
+      height: 200px;
+      top: -25%;
+      left: 60%;
+    }
+  }
+  &:hover {
+    transform: scale(1.1);
+  }
+  &__title {
+    display: block;
+    text-decoration: none;
+    color: white;
+    font-size: 1rem;
+    text-transform: uppercase;
+    font-weight: 500;
+    text-align: center;
+    word-wrap: break-word;
+    @include breakpoints.md {
+      font-size: 1.5rem;
+    }
+    @include breakpoints.lg {
+      font-size: 1.7rem;
+    }
+  }
+}
+
+//Message Card & Share
+.message-card {
+  & {
+    width: 100vw;
+    height: 100vh;
+    background-color: $color-background;
+    display: flex;
+  }
+  &__form {
+    margin: auto;
+    width: 80%;
+    height: 60%;
+    background-color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    @include breakpoints.md {
+      width: 70%;
+      gap: 35px;
+    }
+    @include breakpoints.lg {
+      width: 50%;
+      gap: 50px;
+    }
+    @include breakpoints.xl {
+      width: 40%;
+      gap: 50px;
+    }
+  }
+  &__label {
+    font-size: 1.5rem;
+    color: #223328;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  &__input {
+    width: 100%;
+    appearance: none;
+    border: none;
+    border-bottom: 1px solid rgb(48, 48, 48);
+    color: #223328;
+    font-size: 1.2rem;
+  }
+  &__input:focus {
+    border: none;
+    outline: none;
+    border-bottom: 2px solid rgb(48, 48, 48);
+  }
+  &__button {
+    text-align: center;
+  }
+  &__link {
+    text-decoration: none;
+  }
+  &__button--preview {
+    padding: 15px;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    border-radius: 3rem;
+    font-weight: 600;
+    white-space: nowrap;
+    color: white;
+    border: none;
+    background-color: #223328;
+  }
+  &__button--copy-link {
+    @extend .message-card__button--preview;
+    background-color: $color-red;
+    margin-left: 50px;
+  }
+}
+.limited-text {
+}
+
+//Share card
+.share-card {
+  & {
+  }
+  &__title {
+    color: #223328;
+    font-size: 1.3rem;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 100px;
+    @include breakpoints.md {
+      margin-top: 50px;
+    }
+    @include breakpoints.lg {
+      margin-top: 10px;
+    }
+  }
+  &__wrap-icon {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+  }
+  &__icon {
+    align-self: baseline;
+    font-size: 1.8rem;
+    color: $color-red;
+  }
+}
+
+//Animation .spinner {
+.loading {
+  width: 100vw;
+  height: 100vh;
+  background-color: white;
+  position: fixed;
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: visible;
+}
+.loading--complete {
+  visibility: hidden;
+}
+.spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  height: 300px;
+  position: relative;
+}
+.spinner-text {
+  font-size: 3rem;
+  animation: textLoading 3s ease infinite;
+}
+.spinner-sector {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 1rem solid transparent;
+  position: absolute;
+  animation: spinner var(--duration) ease infinite;
+  mix-blend-mode: normal;
+}
+.spinner-sector--red {
+  border-top-color: lightcoral;
+  --duration: 1s;
+}
+.spinner-sector--blue {
+  border-left-color: lightblue;
+  --duration: 1.5s;
+}
+.spinner-sector--green {
+  border-right-color: lightgreen;
+  --duration: 2s;
+}
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes textLoading {
+  0% {
+    opacity: 1;
+  }
+  25% {
+    opacity: 0.75;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  75% {
+    opacity: 0.25;
+  }
+  100% {
+    opacity: 0.1;
+  }
 }

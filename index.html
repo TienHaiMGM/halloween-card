@@ -11,9 +11,17 @@
     <link rel="stylesheet" href="style/index.css" />
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
   </head>
   <body>
+    <div class="loading">
+      <div class="spinner">
+        <p class="spinner-text">Loading</p>
+        <div class="spinner-sector spinner-sector--red"></div>
+        <div class="spinner-sector spinner-sector--blue"></div>
+        <div class="spinner-sector spinner-sector--green"></div>
+      </div>
+    </div>
     <header class="header">
       <span class="wrap__icon">
         <span class="wrap__icon-music"
@@ -23,12 +31,14 @@
           <i class="fa fa-ban icon-mute-music"></i>
         </span>
       </span>
-      <h1 class="header-title">Halloween Card</h1>
+      <a class="header__link-title" href="#"
+        ><h1 class="header__title">Halloween Card</h1></a
+      >
     </header>
     <main class="main">
       <section class="home">
         <h1 class="home__title">Ready for trick or treat</h1>
-        <a class="home__link" href="#section2"
+        <a class="home__link" href="#items-container"
           ><button class="home__button">Send a halloween card!</button></a
         >
         <img
@@ -37,91 +47,233 @@
         <aside class="audio">
           <audio
             class="audio-control"
-            preload="auto"
             src="./audio/audio-sound-effect.mp3"></audio>
+            <audio
+            class="music-control"
+            src="./audio/music-halloween.mp3">
         </aside>
       </section>
       <section id="items-container" class="choose-card">
-        <img
-          class="image-card"
-          src="./image/halloween-card-1.png"
-          alt="halloween-card" />
-        <img
-          class="image-card"
-          src="./image/halloween-card-2.png"
-          alt="halloween-card" />
-        <img
-          class="image-card"
-          src="./image/halloween-card-3.png"
-          alt="halloween-card" />
-        <img
-          class="image-card grid-2"
-          src="./image/halloween-card-4.png"
-          alt="halloween-card" />
-        <img
-          class="image-card"
-          src="./image/halloween-card-5.png"
-          alt="halloween-card" />
-        <img
-          class="image-card"
-          src="./image/halloween-card-6.png"
-          alt="halloween-card" />
-        <img
-          class="image-card"
-          src="./image/halloween-card-7.png"
-          alt="halloween-card" />
-        <img
-          class="image-card"
-          src="./image/halloween-card-8.png"
-          alt="halloween-card" />
-        <img
-          class="image-card grid-2"
-          src="./image/halloween-card-9.png"
-          alt="halloween-card" />
-        <img
-          class="image-card"
-          src="./image/halloween-card-10.png"
-          alt="halloween-card" />
-        <img
-          class="image-card"
-          src="./image/halloween-card-11.png"
-          alt="halloween-card" />
-        <img
-          class="image-card"
-          src="./image/halloween-card-12.png"
-          alt="halloween-card" />
-        <img
-          class="image-card"
-          src="./image/halloween-card-13.png"
-          alt="halloween-card" />
-        <img
-          class="image-card grid-2"
-          src="./image/halloween-card-14.png"
-          alt="halloween-card" />
-        <img
-          class="image-card"
-          src="./image/halloween-card-15.png"
-          alt="halloween-card" />
-        <img
-          class="image-card"
-          src="./image/halloween-card-16.png"
-          alt="halloween-card" />
-        <img
-          class="image-card"
-          src="./image/halloween-card-17.png"
-          alt="halloween-card" />
-        <img
-          class="image-card"
-          src="./image/halloween-card-18.png"
-          alt="halloween-card" />
-        <img
-          class="image-card grid-2"
-          src="./image/halloween-card-19.png"
-          alt="halloween-card" />
-        <img
-          class="image-card"
-          src="./image/halloween-card-20.png"
-          alt="halloween-card" />
+        <a href="#card-selected" class="item-card">
+          <img
+            class="image-card"
+            src="./image/halloween-card-1.png"
+            alt="halloween-card" />
+        </a>
+        <a href="#card-selected" class="item-card"
+          ><img
+            class="image-card"
+            src="./image/halloween-card-2.png"
+            alt="halloween-card"
+        /></a>
+        <a href="#card-selected" class="item-card"
+          ><img
+            class="image-card"
+            src="./image/halloween-card-3.png"
+            alt="halloween-card"
+        /></a>
+        <a href="#card-selected" class="item-card"
+          ><img
+            class="image-card grid-2"
+            src="./image/halloween-card-4.png"
+            alt="halloween-card"
+        /></a>
+        <a href="#card-selected" class="item-card"
+          ><img
+            class="image-card"
+            src="./image/halloween-card-5.png"
+            alt="halloween-card"
+        /></a>
+        <a href="#card-selected" class="item-card"
+          ><img
+            class="image-card"
+            src="./image/halloween-card-6.png"
+            alt="halloween-card"
+        /></a>
+        <a href="#card-selected" class="item-card"
+          ><img
+            class="image-card"
+            src="./image/halloween-card-7.png"
+            alt="halloween-card"
+        /></a>
+        <a href="#card-selected" class="item-card"
+          ><img
+            class="image-card"
+            src="./image/halloween-card-8.png"
+            alt="halloween-card"
+        /></a>
+        <a href="#card-selected" class="item-card"
+          ><img
+            class="image-card grid-2"
+            src="./image/halloween-card-9.png"
+            alt="halloween-card"
+        /></a>
+        <a href="#card-selected" class="item-card"
+          ><img
+            class="image-card"
+            src="./image/halloween-card-10.png"
+            alt="halloween-card"
+        /></a>
+        <a href="#card-selected" class="item-card"
+          ><img
+            class="image-card"
+            src="./image/halloween-card-11.png"
+            alt="halloween-card"
+        /></a>
+        <a href="#card-selected" class="item-card"
+          ><img
+            class="image-card"
+            src="./image/halloween-card-12.png"
+            alt="halloween-card"
+        /></a>
+        <a href="#card-selected" class="item-card"
+          ><img
+            class="image-card"
+            src="./image/halloween-card-13.png"
+            alt="halloween-card"
+        /></a>
+        <a href="#card-selected" class="item-card"
+          ><img
+            class="image-card grid-2"
+            src="./image/halloween-card-14.png"
+            alt="halloween-card"
+        /></a>
+        <a href="#card-selected" class="item-card"
+          ><img
+            class="image-card"
+            src="./image/halloween-card-15.png"
+            alt="halloween-card"
+        /></a>
+        <a href="#card-selected" class="item-card"
+          ><img
+            class="image-card"
+            src="./image/halloween-card-16.png"
+            alt="halloween-card"
+        /></a>
+        <a href="#card-selected" class="item-card"
+          ><img
+            class="image-card"
+            src="./image/halloween-card-17.png"
+            alt="halloween-card"
+        /></a>
+        <a href="#card-selected" class="item-card"
+          ><img
+            class="image-card"
+            src="./image/halloween-card-18.png"
+            alt="halloween-card"
+        /></a>
+        <a href="#card-selected" class="item-card"
+          ><img
+            class="image-card grid-2"
+            src="./image/halloween-card-19.png"
+            alt="halloween-card"
+        /></a>
+        <a href="#card-selected" class="item-card"
+          ><img
+            class="image-card"
+            src="./image/halloween-card-20.png"
+            alt="halloween-card"
+        /></a>
+      </section>
+      <section id="card-selected" class="card-selected">
+        <div class="exit-to-back">
+          <a href="#items-container" class="wrap__exit-button"
+            ><i class="fa-solid fa-xmark"></i
+          ></a>
+        </div>
+        <div class="next-back">
+          <div class="number-card">
+            <span class="number-card__first">1</span>
+            <span class="number-card__second">20</span>
+          </div>
+          <div class="card-selected__items">
+            <img
+              class="card-selected__image"
+              src="./image/halloween-card-1.png"
+              alt="halloween-card" />
+          </div>
+          <div class="next-back__button">
+            <span class="wrap__next-button"
+              ><i class="fa-solid fa-angle-up"></i
+            ></span>
+            <span class="wrap__back-button"
+              ><i class="fa-solid fa-angle-down"></i
+            ></span>
+          </div>
+        </div>
+        <div class="message-button">
+          <a href="#message-card" class="message-button__title"
+            >Write a message & share this card</a
+          >
+        </div>
+      </section>
+      <section id="message-card" class="message-card">
+        <div class="exit-to-back">
+          <a href="#items-container" class="wrap__exit-button"
+            ><i class="fa-solid fa-xmark"></i
+          ></a>
+        </div>
+        <form class="message-card__form">
+          <label class="message-card__label" for="#title">
+            Title
+            <span class="limited-text"> 0 / 40</span>
+            <input
+              class="message-card__input"
+              id="title"
+              type="text"
+              name="title"
+              value=""
+              maxlength="40" />
+          </label>
+          <label class="message-card__label" for="#message">
+            Message
+            <span class="limited-text"> 0 / 200</span>
+            <input
+              class="message-card__input"
+              id="message"
+              type="text"
+              name="message"
+              value="" 
+              maxlength="200" />
+          </label>
+          <label class="message-card__label" for="#from">
+            From
+            <span class="limited-text"> 0 / 40</span>
+            <input
+              class="message-card__input"
+              id="from"
+              type="text"
+              name="from"
+              value="" 
+              maxlength="40" />
+          </label>
+          <div class="share-card">
+            <p class="share-card__title">Share your Halloween Card</p>
+            <div class="share-card__wrap-icon">
+              <a class="share-card__icon" href=""
+                ><i class="fa-brands fa-facebook"></i
+              ></a>
+              <a class="share-card__icon" href=""
+                ><i class="fa-brands fa-twitter"></i
+              ></a>
+              <a class="share-card__icon" href=""
+                ><i class="fa-brands fa-instagram"></i
+              ></a>
+            </div>
+          </div>
+          <div class="message-card__button">
+            <a class="message-card__link" href="">
+              <button class="message-card__button--preview" type="button">
+                Preview
+              </button>
+            </a>
+            <span>
+              <button class="message-card__button--copy-link" type="button">
+                Copy link
+              </button>
+            </span>
+          </div>
+        </form>
       </section>
     </main>
     <script src="index.js"></script>

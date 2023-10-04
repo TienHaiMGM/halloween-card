@@ -7,10 +7,6 @@ $color-red: rgb(218, 28, 28);
   src: url(../font/Creepster-Regular.ttf) format("truetype");
 }
 
-// @mixin transformFlyCard($scale, $translateX, $translateY, $rotate) {
-//   transform: scale($scale) translate($translateX, $translateY) rotate($rotate);
-// }
-
 @keyframes flyCard {
   0% {
     transform: none;
@@ -101,6 +97,7 @@ $color-red: rgb(218, 28, 28);
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
     @include breakpoints.md {
       width: 160px;
       height: 160px;
@@ -182,6 +179,7 @@ $color-red: rgb(218, 28, 28);
   &-title {
     color: #223328;
     font-size: 2.5rem;
+    text-transform: uppercase;
   }
   &-content {
     color: #223328;

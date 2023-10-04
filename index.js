@@ -13,6 +13,17 @@
 //   item.setAttribute("tabindex", "-1");
 // }
 
+//oj save value
+const oj = {
+  image: "",
+  title: "",
+  message: "",
+  from: "",
+};
+function setOj(name, value) {
+  oj[name] = value;
+}
+
 //Detect loading page
 const loading = document.querySelector(".loading");
 window.addEventListener("load", () => {
@@ -204,6 +215,7 @@ function handleClickItemsCard(item) {
   cardSelectedImage.setAttribute("src", srcImage);
   document.querySelector(".number-card__first").innerText =
     images.indexOf(srcImage) + 1;
+  setOj("image", srcImage);
 }
 
 //Selected Card
@@ -259,8 +271,40 @@ function handleOnInputMessage(event) {
   const currentLengthText = event.target.value.length;
   const maxLength = event.target.getAttribute("maxlength");
   spanLimitedText.innerText = `${currentLengthText} / ${maxLength}`;
+
+  const nameInput = event.target.getAttribute("name");
+  setOj(nameInput, event.target.value);
 }
 
 //Query URL
-const params = new URLSearchParams();
+function getUrlParams() {
+  const url = "http://127.0.0.1:5173/shareCard.html?";
+  const params = new URLSearchParams(oj);
+  const queryString = params.toString();
+  return url + queryString;
+}
+const messageCardLink = document.querySelector(".message-card__link");
+messageCardLink.addEventListener("click", () => {
+  //Navigate link with param
+  messageCardLink.setAttribute("href", getUrlParams());
+  window.open(getUrlParams());
 
+  //Mute music
+});
+
+//Copy URL
+const messageCardButtonCopyLink = document.querySelector(
+  ".message-card__button--copy-link"
+);
+const messageCardButtonLinkCopied = document.querySelector(
+  ".message-card__button--link-copied"
+);
+messageCardButtonCopyLink.addEventListener("click", () => {
+  navigator.clipboard.writeText(getUrlParams());
+  messageCardButtonCopyLink.classList.add("hiddenButton");
+  messageCardButtonLinkCopied.classList.add("showButton");
+  setTimeout(() => {
+    messageCardButtonCopyLink.classList.remove("hiddenButton");
+    messageCardButtonLinkCopied.classList.remove("showButton");
+  }, 2000);
+});

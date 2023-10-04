@@ -12,7 +12,7 @@ $color-red: rgb(218, 28, 28);
 body {
   margin: 0;
   padding: 0;
-  // overflow: hidden;
+  overflow: hidden;
   scroll-behavior: smooth;
 }
 
@@ -37,6 +37,7 @@ a:focus {
   top: 20px;
   margin: 0 auto;
   text-align: center;
+  z-index: 999;
 }
 .wrap__icon {
   padding-top: 5px;
@@ -322,7 +323,7 @@ a:focus {
   color: white;
   z-index: 999;
   position: fixed;
-  top: 0px;
+  top: 20px;
   right: 20px;
 }
 
@@ -334,11 +335,14 @@ a:focus {
     border: 2px solid white;
     background-color: orangered;
     position: relative;
-    top: 10%;
     left: 40%;
+    top: 10%;
     z-index: 2;
     cursor: pointer;
     transition: 0.3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     @include breakpoints.md {
       width: 180px;
       height: 180px;
@@ -365,10 +369,10 @@ a:focus {
     text-align: center;
     word-wrap: break-word;
     @include breakpoints.md {
-      font-size: 1.5rem;
+      font-size: 1.3rem;
     }
     @include breakpoints.lg {
-      font-size: 1.7rem;
+      font-size: 1.5rem;
     }
   }
 }
@@ -447,6 +451,11 @@ a:focus {
     background-color: $color-red;
     margin-left: 50px;
   }
+  &__button--link-copied {
+    @extend .message-card__button--preview;
+    margin-left: 50px;
+    display: none;
+  }
   &__label--last {
     margin-bottom: 100px;
     @include breakpoints.md {
@@ -457,6 +466,13 @@ a:focus {
     }
   }
 }
+.hiddenButton {
+  display: none;
+}
+.showButton {
+  display: inline;
+}
+
 //Share card
 .share-card {
   & {

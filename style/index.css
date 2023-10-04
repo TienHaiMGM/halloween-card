@@ -98,6 +98,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 @media (min-width: 766px) {
   .halloween-card__button {
@@ -190,6 +191,7 @@
 .halloween-card__message-title {
   color: #223328;
   font-size: 2.5rem;
+  text-transform: uppercase;
 }
 .halloween-card__message-content {
   color: #223328;
@@ -255,6 +257,7 @@
 body {
   margin: 0;
   padding: 0;
+  overflow: hidden;
   scroll-behavior: smooth;
 }
 
@@ -280,6 +283,7 @@ a:focus {
   top: 20px;
   margin: 0 auto;
   text-align: center;
+  z-index: 999;
 }
 
 .wrap__icon {
@@ -622,7 +626,7 @@ a:focus {
   color: white;
   z-index: 999;
   position: fixed;
-  top: 0px;
+  top: 20px;
   right: 20px;
 }
 
@@ -633,11 +637,14 @@ a:focus {
   border: 2px solid white;
   background-color: orangered;
   position: relative;
-  top: 10%;
   left: 40%;
+  top: 10%;
   z-index: 2;
   cursor: pointer;
   transition: 0.3s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 @media (min-width: 766px) {
   .message-button {
@@ -670,12 +677,12 @@ a:focus {
 }
 @media (min-width: 766px) {
   .message-button__title {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
   }
 }
 @media (min-width: 1024px) {
   .message-button__title {
-    font-size: 1.7rem;
+    font-size: 1.5rem;
   }
 }
 
@@ -742,7 +749,7 @@ a:focus {
 .message-card__link {
   text-decoration: none;
 }
-.message-card__button--preview, .message-card__button--copy-link {
+.message-card__button--preview, .message-card__button--link-copied, .message-card__button--copy-link {
   padding: 15px;
   font-size: 1.2rem;
   text-transform: uppercase;
@@ -757,6 +764,10 @@ a:focus {
   background-color: rgb(218, 28, 28);
   margin-left: 50px;
 }
+.message-card__button--link-copied {
+  margin-left: 50px;
+  display: none;
+}
 .message-card__label--last {
   margin-bottom: 100px;
 }
@@ -769,6 +780,14 @@ a:focus {
   .message-card__label--last {
     margin-bottom: 25px;
   }
+}
+
+.hiddenButton {
+  display: none;
+}
+
+.showButton {
+  display: inline;
 }
 
 .share-card {

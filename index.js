@@ -1,18 +1,4 @@
 "use strict";
-
-//Prevent Default Key Tab
-// const bodyTag = document.getElementsByTagName("body");
-// const inputTypeText = document.querySelectorAll("input[type='text']");
-// const linkTag = document.querySelectorAll("a");
-// const buttonTag = document.querySelectorAll("button");
-
-// for (let item of buttonTag) {
-//   item.setAttribute("tabindex", "-1");
-// }
-// for (let item of linkTag) {
-//   item.setAttribute("tabindex", "-1");
-// }
-
 //oj save value
 const oj = {
   image: "",
@@ -24,14 +10,14 @@ function setOj(name, value) {
   oj[name] = value;
 }
 
-//Detect loading page
+//Detect loading page and load after 2s
 const loading = document.querySelector(".loading");
 window.addEventListener("load", () => {
   setTimeout(() => {
     if (document.readyState == "complete") {
       loading.classList.add("loading--complete");
     }
-  }, 100);
+  }, 2000);
 });
 
 const headerLinkTitle = document.querySelector(".header__link-title");
@@ -105,7 +91,7 @@ const handleDragCard = () => {
   function mouseMove(e) {
     if (isDown) {
       e.preventDefault();
-      //Move vertcally
+      //Move vertically
       const y = e.pageY - container.offsetTop;
       const walkY = y - startY;
       container.scrollTop = scrollTop - walkY;
@@ -210,12 +196,21 @@ let itemsCard = document.querySelectorAll(".item-card");
 for (let item of itemsCard) {
   item.addEventListener("click", (item) => handleClickItemsCard(item));
 }
+
+const exitToBack = document.querySelector(".exit-to-back");
+exitToBack.addEventListener("click", () => {
+  exitToBack.classList.remove("showButton");
+});
 function handleClickItemsCard(item) {
   const srcImage = item.target.getAttribute("src");
   cardSelectedImage.setAttribute("src", srcImage);
   document.querySelector(".number-card__first").innerText =
     images.indexOf(srcImage) + 1;
   setOj("image", srcImage);
+
+  // show exitToBack
+
+  exitToBack.classList.add("showButton");
 }
 
 //Selected Card
@@ -278,7 +273,7 @@ function handleOnInputMessage(event) {
 
 //Query URL
 function getUrlParams() {
-  const url = "http://127.0.0.1:5173/shareCard.html?";
+  const url = "http://127.0.0.1:5173/shareCard/shareCard.html?";
   const params = new URLSearchParams(oj);
   const queryString = params.toString();
   return url + queryString;
@@ -308,3 +303,144 @@ messageCardButtonCopyLink.addEventListener("click", () => {
     messageCardButtonLinkCopied.classList.remove("showButton");
   }, 2000);
 });
+
+//Share Link Social
+const linkURL = "http://127.0.0.1:5173";
+const messageText = encodeURIComponent(
+  "Happy Halloween Day, Ready For Trick Or Treat"
+);
+const titleShareLink = encodeURIComponent("Create Halloween Card");
+
+const facebookLink = document.querySelector(".icon-facebook");
+facebookLink.href = `https://www.facebook.com/share.php?u=${linkURL}&title=${titleShareLink}`;
+const twitterLink = document.querySelector(".icon-twitter");
+twitterLink.href = `https://twitter.com/intent/tweet?&url=${linkURL}&text=${messageText}&via=HalloweenCard
+`;
+const linkedinLink = document.querySelector(".icon-linkedin");
+linkedinLink.href = `https://www.linkedin.com/sharing/share-offsite/?url=${linkURL}`;
+
+//Hidden Choose Card Instruct when click
+
+function hiddenChooseCardInstruct() {
+  const chooseCardInstructWrap = document.querySelector(
+    ".choose-card__instruct-wrap"
+  );
+  chooseCardInstructWrap.addEventListener("mousedown", () => {
+    if (chooseCardInstructWrap.classList.value.indexOf("hiddenButton") == -1) {
+      chooseCardInstructWrap.classList.add("hiddenButton");
+    }
+  });
+}
+hiddenChooseCardInstruct();
+
+//Momentum Horizontal Drag
+/*
+const slider = document.querySelector(".choose-card");
+let isDown = false;
+let startXSlider;
+let startYSlider;
+let scrollLeftSlider;
+let scrollTopSlider;
+let velX = 0;
+let velY = 0;
+let momentumID;
+
+slider.addEventListener("mousedown", (e) => {
+  isDown = true;
+  startXSlider = e.pageX - slider.offsetLeft;
+  startYSlider = e.pageY - slider.offsetTop;
+  scrollLeftSlider = slider.scrollLeft;
+  scrollTopSlider = slider.scrollTop;
+  cancelMomentumTracking();
+  console.log(
+    "test",
+    startXSlider,
+    startYSlider,
+    scrollLeftSlider,
+    scrollTopSlider
+  );
+});
+
+slider.addEventListener("mouseleave", () => {
+  isDown = false;
+});
+
+slider.addEventListener("mouseup", () => {
+  isDown = false;
+  beginMomentumTracking();
+});
+
+slider.addEventListener("mousemove", (e) => {
+  if (!isDown) return;
+  e.preventDefault();
+  const x = e.pageX - slider.offsetLeft;
+  const y = e.pageY - slider.offsetTop;
+  const walkX = (x - startXSlider) * 1.2; //scroll-fast
+  const walkY = (y - startYSlider) * 1.2;
+  const prevScrollLeft = slider.scrollLeft;
+  const preScrollTop = slider.scrollTop;
+  slider.scrollLeft = scrollLeftSlider - walkX;
+  slider.scrollTop = scrollTopSlider - walkY;
+  velX = slider.scrollLeft - prevScrollLeft;
+  velY = slider.scrollTop - preScrollTop;
+
+  console.log(
+    prevScrollLeft,
+    preScrollTop,
+    slider.scrollLeft,
+    slider.scrollTop,
+    velX,
+    velY
+  );
+});
+
+// Momentum
+
+slider.addEventListener("wheel", (e) => {
+  console.log("ssdfsfsf");
+  cancelMomentumTracking();
+});
+
+function beginMomentumTracking() {
+  cancelMomentumTracking();
+  momentumID = requestAnimationFrame(momentumLoop);
+}
+function cancelMomentumTracking() {
+  cancelAnimationFrame(momentumID);
+}
+function momentumLoop() {
+  slider.scrollLeft += velX;
+  slider.scrollTop += velY;
+  velX *= 0.9;
+  velY *= 0.9;
+  console.log("s", velX, velY);
+  if (Math.abs(velX) > 0.5) {
+    momentumID = requestAnimationFrame(momentumLoop);
+  }
+}
+*/
+
+//Prevent Default Key Tab
+// const bodyTag = document.getElementsByTagName("body");
+// const inputTypeText = document.querySelectorAll("input[type='text']");
+// const linkTag = document.querySelectorAll("a");
+// const buttonTag = document.querySelectorAll("button");
+
+// for (let item of buttonTag) {
+//   item.setAttribute("tabindex", "-1");
+// }
+// for (let item of linkTag) {
+//   item.setAttribute("tabindex", "-1");
+// }
+
+//Detect when user leaves page
+// window.addEventListener("visibilitychange", (event) =>
+//   handleVisibilitychange(event)
+// );
+// function handleVisibilitychange(event) {
+//   if (document.visibilityState === "visible") {
+//     musicControl.play();
+//   } else {
+//     musicControl.pause();
+//   }
+// }

@@ -414,6 +414,7 @@ a:focus {
   position: absolute;
   bottom: 10px;
   right: 50px;
+  transition: 0.3s;
 }
 @media (min-width: 640px) {
   .home__background-banner {
@@ -439,6 +440,9 @@ a:focus {
     right: 35vw;
   }
 }
+.home__background-banner:hover {
+  transform: scale(1.1);
+}
 
 .choose-card {
   width: 100vw;
@@ -455,6 +459,7 @@ a:focus {
   overflow: hidden;
   cursor: grab;
   transition: 0.3s;
+  position: relative;
 }
 @media (min-width: 766px) {
   .choose-card {
@@ -512,6 +517,61 @@ a:focus {
   .item-card:nth-child(3n+4) {
     margin-top: 50px;
   }
+}
+
+@keyframes dragLeftToRight {
+  0% {
+    transform: translateX(0%);
+    background-image: url(../image/grab-hand.png);
+  }
+  50% {
+    background-image: url(../image/grab-hand.png);
+  }
+  100% {
+    transform: translateX(180%);
+    background-image: url(../image/open-hand.png);
+  }
+}
+.choose-card__instruct-wrap {
+  position: absolute;
+}
+
+.choose-card__instruct-background--fade {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background-color: white;
+  opacity: 0.2;
+}
+
+.choose-card__instruct {
+  position: relative;
+  background-color: red;
+  border-radius: 50%;
+  border: 2px solid white;
+  width: 300px;
+  height: 300px;
+  top: calc(50vh - 150px);
+  left: calc(50vw - 150px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.choose-card__instruct-icon {
+  align-self: flex-start;
+  margin-left: 20px;
+  width: 100px;
+  height: 100px;
+  background-image: url(../image/open-hand.png);
+  background-size: 80px 80px;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  animation: dragLeftToRight 1.5s ease-in-out infinite alternate;
+}
+.choose-card__instruct-text {
+  font-size: 2rem;
+  color: white;
 }
 
 .card-selected {
@@ -619,6 +679,7 @@ a:focus {
 }
 .exit-to-back {
   position: relative;
+  display: none;
 }
 
 .wrap__exit-button {

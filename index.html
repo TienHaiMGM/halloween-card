@@ -8,10 +8,11 @@
       name="description"
       content="Let's create a custom Halloween card for you at here." />
     <title>Halloween Card</title>
-    <link rel="stylesheet" href="style/index.css" />
+    <link rel="stylesheet" href="style/index.css" type="text/css" />
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      type="text/css" />
   </head>
   <body>
     <div class="loading">
@@ -43,17 +44,27 @@
         >
         <img
           class="home__background-banner"
-          src="./image/background-banner.png" />
+          src="./image/background-banner.png"
+          alt="background banner" />
         <aside class="audio">
           <audio
             class="audio-control"
             src="./audio/audio-sound-effect.mp3"></audio>
-            <audio
+          <audio
             class="music-control"
-            src="./audio/music-halloween.mp3">
+            src="./audio/music-halloween.mp3"></audio>
         </aside>
       </section>
       <section id="items-container" class="choose-card">
+        <div class="choose-card__instruct-wrap">
+          <div class="choose-card__instruct-background--fade"></div>
+          <div class="choose-card__instruct">
+            <span class="choose-card__instruct-icon"></span>
+            <p class="choose-card__instruct-text">Drag to Explore</p>
+            <p class="choose-card__instruct-text">Tab to Expand</p>
+          </div>
+        </div>
+
         <a href="#card-selected" class="item-card">
           <img
             class="image-card"
@@ -214,7 +225,7 @@
           ></a>
         </div>
         <form class="message-card__form">
-          <label class="message-card__label" for="#title">
+          <label class="message-card__label" for="title">
             Title
             <span class="limited-text"> 0 / 40</span>
             <input
@@ -225,7 +236,7 @@
               value=""
               maxlength="40" />
           </label>
-          <label class="message-card__label" for="#message">
+          <label class="message-card__label" for="message">
             Message
             <span class="limited-text"> 0 / 200</span>
             <input
@@ -233,10 +244,12 @@
               id="message"
               type="text"
               name="message"
-              value="" 
+              value=""
               maxlength="200" />
           </label>
-          <label class="message-card__label message-card__label--last" for="#from">
+          <label
+            class="message-card__label message-card__label--last"
+            for="from">
             From
             <span class="limited-text"> 0 / 40</span>
             <input
@@ -244,25 +257,28 @@
               id="from"
               type="text"
               name="from"
-              value="" 
+              value=""
               maxlength="40" />
           </label>
           <div class="share-card">
             <p class="share-card__title">Share your Halloween Card</p>
             <div class="share-card__wrap-icon">
-              <a class="share-card__icon" href=""
+              <a class="share-card__icon icon-facebook" href="" target="_blank"
                 ><i class="fa-brands fa-facebook"></i
               ></a>
-              <a class="share-card__icon" href=""
+              <a class="share-card__icon icon-twitter" href="" target="_blank"
                 ><i class="fa-brands fa-twitter"></i
               ></a>
-              <a class="share-card__icon" href=""
-                ><i class="fa-brands fa-instagram"></i
+              <a class="share-card__icon icon-linkedin" href="" target="_blank"
+                ><i class="fa-brands fa-linkedin"></i
               ></a>
             </div>
           </div>
           <div class="message-card__button">
-            <a class="message-card__link" href="http://127.0.0.1:5173/shareCard.html" target="_blank">
+            <a
+              class="message-card__link"
+              href="http://127.0.0.1:5173"
+              target="_blank">
               <button class="message-card__button--preview" type="button">
                 Preview
               </button>

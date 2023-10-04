@@ -77,7 +77,7 @@ function createImageElement(img) {
   imgEl.classList.add("halloween-card__image");
   return imgEl;
 }
-halloweenCardItems.appendChild(createImageElement(oj["image"]));
+halloweenCardItems.appendChild(createImageElement(`.${oj["image"]}`));
 
 // Handle volume
 
@@ -94,3 +94,18 @@ function handleToggleVolume() {
     musicControl.muted = true;
   }
 }
+
+//Share Link Social
+const linkURL = "http://127.0.0.1:5173";
+const messageText = encodeURIComponent(
+  "Happy Halloween Day, Ready For Trick Or Treat"
+);
+const titleShareLink = encodeURIComponent("Create Halloween Card");
+
+const facebookLink = document.querySelector(".icon-facebook");
+facebookLink.href = `https://www.facebook.com/share.php?u=${linkURL}&title=${titleShareLink}`;
+const twitterLink = document.querySelector(".icon-twitter");
+twitterLink.href = `https://twitter.com/intent/tweet?&url=${linkURL}&text=${messageText}&via=HalloweenCard
+`;
+const linkedinLink = document.querySelector(".icon-linkedin");
+linkedinLink.href = `https://www.linkedin.com/sharing/share-offsite/?url=${linkURL}`;
